@@ -1,4 +1,4 @@
-import glas.utils
+from glas.utils import *
 import numpy as np
 
 def glas_stats(true_instance_masks, pred_instance_masks):
@@ -24,15 +24,15 @@ def glas_stats(true_instance_masks, pred_instance_masks):
         true = true_instance_masks[i]
         pred = pred_instance_masks[i]
 
-        tp_i, fp_i, fn_i = utils.get_tp_fp_fn(pred, true)
+        tp_i, fp_i, fn_i = get_tp_fp_fn(pred, true)
         tp += tp_i
         fp += fp_i
         fn += fn_i
 
-        x, y = utils.get_dice_info(pred, true, pred_pixel_count, true_pixel_count)
+        x, y = get_dice_info(pred, true, pred_pixel_count, true_pixel_count)
         dice += 0.5 * (x + y)
 
-        z, w = utils.get_haus_info(pred, true, pred_pixel_count, true_pixel_count)
+        z, w = get_haus_info(pred, true, pred_pixel_count, true_pixel_count)
         haus += 0.5 * (z + w)
 
     pr = tp / (tp + fp)
