@@ -273,9 +273,7 @@ def get_haus_info(pred, true, total_pix_pred, total_pix_true):
         pred_masks.append(p_mask)
     
     # First term in RHS of object hausdorff equation
-    print('true_id', len(true_id))
     for true_idx in range(1, len(true_id)):
-        print('true_idx', true_idx)
         t_mask = true_masks[true_idx]
         t_mask_area = np.sum(t_mask)
         gamma = t_mask_area / total_pix_true
@@ -301,9 +299,7 @@ def get_haus_info(pred, true, total_pix_pred, total_pix_true):
             h_temp1 += gamma * haus_dist  # calculate hausforff distance (gamme gives more weight to larger glands in the GT)
     
     # Second term in RHS of object hausdorff equation
-    print('pred_id', len(pred_id))
     for pred_idx in range(1, len(pred_id)):
-        print('pred_idx', pred_idx)
         p_mask = pred_masks[pred_idx]
         p_mask_area = np.sum(p_mask)
         sigma = p_mask_area / total_pix_pred
