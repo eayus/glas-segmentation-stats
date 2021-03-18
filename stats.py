@@ -1,4 +1,4 @@
-import utils
+import glas.utils
 import numpy as np
 
 def glas_stats(true_instance_masks, pred_instance_masks):
