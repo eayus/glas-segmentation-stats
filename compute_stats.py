@@ -56,7 +56,7 @@ def compute_stats(pred_dir, true_dir):
         basename = filename.split('.')[0]
         #basename = basename.split('_')[0] + '_' + basename.split('_')[1]
 
-        print('Obtaining stats for ',basename)
+        #print('Obtaining stats for ',basename)
 
         true = np.load(true_dir + basename + '.npy')
         true = true.astype('int32')
