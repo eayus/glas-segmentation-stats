@@ -34,6 +34,8 @@ def compute_stats(pred_dir, true_dir):
     ohaus_tmp1 = 0
     ohaus_tmp2 = 0
 
+    haus = 0
+
     """
     Toggle whether or not to calculate the below stats
     Warning: object hausdorff takes a while!
@@ -61,6 +63,9 @@ def compute_stats(pred_dir, true_dir):
 
         pred = np.load(pred_dir + basename + '.npy')
         pred = pred.astype('int32')
+
+        z, w = get_haus_info(pred, true, total_pix_pred, total_pix_true)
+        haus += 0.5 * (z + w)
 
         if obj_f1:
             # Get info for calculating object f1
@@ -90,6 +95,8 @@ def compute_stats(pred_dir, true_dir):
         # Calculate object dice
         obj_dice = 0.5 * (odice_tmp1 + odice_tmp2)
         metrics['Obj Dice'] = obj_dice
+
+    metrics['Obj Haus'] = haus
 
 
     return metrics
