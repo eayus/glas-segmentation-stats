@@ -52,7 +52,7 @@ def compute_stats(pred_dir, true_dir):
     for filename in file_list[:]:
         filename = os.path.basename(filename)
         basename = filename.split('.')[0]
-        basename = basename.split('_')[0] + '_' + basename.split('_')[1]
+        #basename = basename.split('_')[0] + '_' + basename.split('_')[1]
 
         print('Obtaining stats for ',basename)
 
